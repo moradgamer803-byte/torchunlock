@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">TorchUnlock</string>
     <string name="overline">Xposed module</string>
-    <string name="tagline">Flashlight works at any battery level</string>
+    <string name="tagline">Torch works under 15% — real battery stays real</string>
 
     <string name="label_status">STATUS</string>
     <string name="label_hooks">ACTIVE HOOKS</string>
@@ -12,38 +12,38 @@
     <string name="status_checking">Checking SystemUI…</string>
     <string name="status_checking_hint">Waiting for the module to report in from SystemUI</string>
     <string name="status_armed">Active in SystemUI</string>
-    <string name="status_armed_live">Battery reads as %1$d%% while the flashlight asks for it</string>
-    <string name="status_armed_cached">Was active last time — reopen after a reboot</string>
+    <string name="status_armed_live">Hooks armed — battery display untouched</string>
+    <string name="status_armed_cached">Was active last time — reopen after a SystemUI restart</string>
     <string name="status_off">Not active yet</string>
-    <string name="status_off_hint">Enable TorchUnlock for SystemUI in LSPosed, then reboot the phone</string>
+    <string name="status_off_hint">Enable TorchUnlock for SystemUI in LSPosed, then restart SystemUI (or the phone)</string>
 
     <string name="layers_none">no hooks yet</string>
 
-    <string name="change_1">Battery level lies, torch-only</string>
-    <string name="change_1_sub">While flashlight code is running, the framework reports 100% instead of the real level. Your battery icon and every other app stay correct.</string>
+    <string name="change_1">Tap gate bypassed</string>
+    <string name="change_1_sub">Only inside the flashlight tile\'s own tap handler, the battery reads 100%. The status bar, quick-settings battery and every other app keep the real percentage.</string>
 
-    <string name="change_2">ROM guard removed</string>
-    <string name="change_2_sub">This ROM\'s SystemUI refuses the torch under 15% by listening to battery changes. Those listener methods are switched off.</string>
+    <string name="change_2">Auto-off removed</string>
+    <string name="change_2_sub">The ROM listener that force-switches the torch off when the battery crosses under 15% is disabled.</string>
 
-    <string name="change_3">Availability forced on</string>
-    <string name="change_3_sub">The quick-settings tile no longer shows itself as unavailable when the camera driver reports “in use”.</string>
+    <string name="change_3">Nothing global</string>
+    <string name="change_3_sub">v2 hooks only the flashlight tile classes. No generic battery API is touched, so the battery display cannot be affected.</string>
 
     <string name="label_setup">SETUP — WHAT TO TICK IN LSPOSED</string>
 
     <string name="step_1">1.  Open LSPosed → tap Modules</string>
     <string name="step_2">2.  Tap TorchUnlock to tick it</string>
     <string name="step_3">3.  Scroll down → tick System UI</string>
-    <string name="step_4">4.  Restart the phone</string>
+    <string name="step_4">4.  Restart SystemUI (or reboot the phone)</string>
     <string name="step_5">5.  Open this app → status must go green</string>
 
     <string name="step_warning">Step 3 is the one everyone misses. Ticking the module without ticking System UI does nothing.</string>
 
-    <string name="test_body">Then let the battery drop below 15%% and tap the flashlight tile in quick settings — it should light up.\n\nIf it does not, run this in Termux and send me the output:\n\nlogcat -s TorchUnlock</string>
+    <string name="test_body">Let the battery drop below 15%% and tap the flashlight tile in quick settings — it should light up, and the battery percentage must stay the real one.\n\nIf it does not, run this in Termux and send me the output:\n\nlogcat -s TorchUnlock</string>
 
     <string name="cta">Open LSPosed / setup guide</string>
 
     <string name="guide_title">Enable the module</string>
-    <string name="guide_body">1. Open LSPosed → Modules\n2. Tick TorchUnlock\n3. Scroll down and tick SystemUI\n4. Reboot the phone\n\nThat\'s it — the tile will work at 0%% battery.</string>
+    <string name="guide_body">1. Open LSPosed → Modules\n2. Tick TorchUnlock\n3. Scroll down and tick SystemUI\n4. Restart SystemUI or reboot the phone\n\nThat\'s it — the tile will work at 0%% battery, and the real percentage keeps showing.</string>
 
-    <string name="xposed_description">Removes the low-battery flashlight block in SystemUI so the torch works at any battery level.</string>
+    <string name="xposed_description">Removes the low-battery flashlight block in SystemUI only. The real battery percentage is never touched.</string>
 </resources>
